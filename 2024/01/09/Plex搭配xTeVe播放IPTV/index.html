@@ -1,0 +1,180 @@
+<!DOCTYPE html><html class="hide-aside" lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Plex搭配xTeVe播放IPTV | 不知名小驿站</title><meta name="author" content="C B"><meta name="copyright" content="C B"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="抓包 使用祖传的AX88179 USB转RJ-45把机顶盒和电脑用网线连起来。 控制面板，网络适配器里按住ctrl全选AX88179和你的电脑LAN口右键桥接，若一次性桥接不成功，单独右键加入桥接。 打开wireshark抓AX88179网络的包，然后再机顶盒开机，遥控板进入直播，随便按几下。保存到本地。 搜索栏输入http，右键追踪http流，搜索igmp，直至找到直播源地址，点一下，自动选中该">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Plex搭配xTeVe播放IPTV">
+<meta property="og:url" content="http://keyboarder.xyz/2024/01/09/Plex%E6%90%AD%E9%85%8DxTeVe%E6%92%AD%E6%94%BEIPTV/index.html">
+<meta property="og:site_name" content="不知名小驿站">
+<meta property="og:description" content="抓包 使用祖传的AX88179 USB转RJ-45把机顶盒和电脑用网线连起来。 控制面板，网络适配器里按住ctrl全选AX88179和你的电脑LAN口右键桥接，若一次性桥接不成功，单独右键加入桥接。 打开wireshark抓AX88179网络的包，然后再机顶盒开机，遥控板进入直播，随便按几下。保存到本地。 搜索栏输入http，右键追踪http流，搜索igmp，直至找到直播源地址，点一下，自动选中该">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://keyboarder.xyz/Avatar.jpeg">
+<meta property="article:published_time" content="2024-01-09T17:46:06.000Z">
+<meta property="article:modified_time" content="2024-03-25T07:56:49.807Z">
+<meta property="article:author" content="C B">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://keyboarder.xyz/Avatar.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://keyboarder.xyz/2024/01/09/Plex%E6%90%AD%E9%85%8DxTeVe%E6%92%AD%E6%94%BEIPTV/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><meta name="yandex-verification" content="{&quot;theme_color&quot;:{&quot;enable&quot;:true,&quot;main&quot;:&quot;#FDDBCA&quot;,&quot;paginator&quot;:&quot;#00c4b6&quot;,&quot;button_hover&quot;:&quot;#FF7242&quot;,&quot;text_selection&quot;:&quot;#00c4b6&quot;,&quot;link_color&quot;:&quot;#99a9bf&quot;,&quot;meta_color&quot;:&quot;#858585&quot;,&quot;hr_color&quot;:&quot;#A4D8FA&quot;,&quot;code_foreground&quot;:&quot;#F47466&quot;,&quot;code_background&quot;:&quot;rgba(27, 31, 35, .05)&quot;,&quot;toc_color&quot;:&quot;#00c4b6&quot;,&quot;blockquote_padding_color&quot;:&quot;#fddbca&quot;,&quot;blockquote_background_color&quot;:&quot;#fddbca&quot;}}"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-25 07:56:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="不知名小驿站" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/Avatar.jpeg" onerror="onerror=null;src='/img/Avatar.jpeg'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a></div></div></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/lockscreen.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">不知名小驿站</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Plex搭配xTeVe播放IPTV</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-01-09T17:46:06.000Z" title="发表于 2024-01-09 17:46:06">2024-01-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-25T07:56:49.807Z" title="更新于 2024-03-25 07:56:49">2024-03-25</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h4 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h4><ol>
+<li>使用祖传的AX88179 USB转RJ-45把机顶盒和电脑用网线连起来。</li>
+<li>控制面板，网络适配器里按住ctrl全选AX88179和你的电脑LAN口右键桥接，若一次性桥接不成功，单独右键加入桥接。</li>
+<li>打开wireshark抓AX88179网络的包，然后再机顶盒开机，遥控板进入直播，随便按几下。保存到本地。</li>
+<li>搜索栏输入http，右键追踪http流，搜索igmp，直至找到直播源地址，点一下，自动选中该流。<br><img src="/img/searchhttp.png" alt="searchhttp.png"><br><img src="/img/searchigmp.png" alt="searchigmp.png"></li>
+<li>保存该流数据。<br><img src="/img/saveigmp.png" alt="saveigmp.png"></li>
+<li>使用gcc编译以下源码出来的./a.out整理数据流文件(仅供参考，可能各地区获取的格式并不一样)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;string.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;termios.h&gt;</span><br><span class="line">#include &lt;ctype.h&gt;</span><br><span class="line">#define BOOL int</span><br><span class="line">#define TRUE 1</span><br><span class="line">#define FALSE 0</span><br><span class="line">char * DASH;</span><br><span class="line">char * BUFFER;</span><br><span class="line">FILE * FP;</span><br><span class="line">FILE * FP2;</span><br><span class="line">char PATH[99999][99];</span><br><span class="line">struct termios init_setting;</span><br><span class="line">void my_exit()</span><br><span class="line">&#123;</span><br><span class="line">    tcsetattr(0,TCSANOW,&amp;init_setting);</span><br><span class="line">printf(&quot;\033[?25h\n&quot;);</span><br><span class="line">    exit(0);</span><br><span class="line">&#125;</span><br><span class="line">int main(int argc, char *argv[])&#123;</span><br><span class="line">        if(signal(SIGINT,my_exit) &#x3D;&#x3D; SIG_ERR)&#123;  &#x2F;&#x2F;信号注册函数</span><br><span class="line">    perror(&quot;signal&quot;);</span><br><span class="line">    exit(-1);</span><br><span class="line">      &#125;</span><br><span class="line">atexit(my_exit);</span><br><span class="line">    struct termios new_setting;</span><br><span class="line">    struct termios new_settingback;</span><br><span class="line">    tcgetattr(0,&amp;init_setting);</span><br><span class="line">    &#x2F;&#x2F;tcgetattr(0,&amp;new_settingback);</span><br><span class="line">    new_setting&#x3D;init_setting;</span><br><span class="line">    new_setting.c_cflag&amp;&#x3D;~CREAD;</span><br><span class="line">    new_setting.c_lflag&amp;&#x3D;~ECHO;</span><br><span class="line">    new_setting.c_lflag&amp;&#x3D;~ICANON;</span><br><span class="line">    tcsetattr(0,TCSANOW,&amp;new_setting);</span><br><span class="line"></span><br><span class="line">DASH&#x3D;(char *)malloc(8999999);</span><br><span class="line">BUFFER&#x3D;(char *)malloc(1999999);</span><br><span class="line">int lines;</span><br><span class="line">    char path[39999];</span><br><span class="line">    lines&#x3D;0;</span><br><span class="line">    char Path;</span><br><span class="line">    &#x2F;&#x2F;char txt[999999]; &#x2F;&#x2F;segment error</span><br><span class="line">    char buffer[200];</span><br><span class="line">    int pleng;</span><br><span class="line">    printf(&quot;\r输入文件路径，按回车键结束:\033[K&quot;);</span><br><span class="line">    fflush(stdout);</span><br><span class="line"></span><br><span class="line">        while(TRUE)&#123;</span><br><span class="line">    strcpy(path,&quot;&quot;);</span><br><span class="line">    strcpy(&amp;Path,&quot;&quot;);</span><br><span class="line">    pleng&#x3D;0;</span><br><span class="line">           while((Path&#x3D;getchar())  !&#x3D; &#39;\0&#39;)&#123;</span><br><span class="line">                if(Path &#x3D;&#x3D; &#39;\x7f&#39;)&#123;</span><br><span class="line">                    if(isascii(path[pleng-1]) &amp;&amp; pleng &gt; 0)&#123;</span><br><span class="line">                        path[pleng-1]&#x3D;&#39;\0&#39;;</span><br><span class="line">                        pleng&#x3D;pleng-1;</span><br><span class="line">                        printf(&quot;\b \b&quot;);</span><br><span class="line">                        fflush(stdout);</span><br><span class="line">                        continue;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else if(!isascii(path[pleng-1]) &amp;&amp; pleng &gt; 0)&#123;</span><br><span class="line">                        path[pleng-3]&#x3D;&#39;\0&#39;;</span><br><span class="line">                        path[pleng-2]&#x3D;&#39;\0&#39;;</span><br><span class="line">                        path[pleng-1]&#x3D;&#39;\0&#39;;</span><br><span class="line">                        printf(&quot;\b\b  \b\b&quot;);</span><br><span class="line">                        fflush(stdout);</span><br><span class="line">                        pleng&#x3D;pleng-3;</span><br><span class="line">                        continue;</span><br><span class="line">                    &#125;</span><br><span class="line">                continue;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">           if(Path &#x3D;&#x3D; &#39;\r&#39; || Path &#x3D;&#x3D; &#39;\n&#39; || Path &#x3D;&#x3D; &#39;\0&#39;)&#123;</span><br><span class="line">           break;</span><br><span class="line">        &#125;</span><br><span class="line">            pleng++;</span><br><span class="line">            strncat(path,&amp;Path,1);</span><br><span class="line">            printf(&quot;%c&quot;,Path);</span><br><span class="line">            fflush(stdout);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    strcpy(PATH[0],path);</span><br><span class="line">            fflush(stdout);</span><br><span class="line">                if(strcmp(PATH[0],&quot;&quot;)!&#x3D;0)&#123;</span><br><span class="line">FP &#x3D; fopen(PATH[0], &quot;r+&quot;);</span><br><span class="line">if (FP &#x3D;&#x3D; NULL) &#123; &#x2F;&#x2F; 判断文件是否打开成功tf&quot;); 1;</span><br><span class="line">continue;</span><br><span class="line">&#125;</span><br><span class="line">            break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">printf(&quot;%s&quot;,PATH[0]);</span><br><span class="line"> FP2 &#x3D; fopen(&quot;iptv.m3u8&quot;, &quot;w+&quot;);</span><br><span class="line">    while (fgets(BUFFER,1999999,FP))&#123;</span><br><span class="line">	    strcat(DASH,BUFFER);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">int si;</span><br><span class="line">char m3u8[1999999];</span><br><span class="line">char NAME[2999999];</span><br><span class="line">BOOL record&#x3D;FALSE;</span><br><span class="line">BOOL recordNAME&#x3D;FALSE;</span><br><span class="line">for (si&#x3D;0;si&lt;strlen(DASH);si++)&#123;</span><br><span class="line">    if (recordNAME &#x3D;&#x3D; TRUE)&#123;</span><br><span class="line">if (DASH[si]&#x3D;&#x3D;&#39;&quot;&#39;)&#123;</span><br><span class="line">recordNAME&#x3D;FALSE;</span><br><span class="line">printf(&quot;%s &quot;,NAME);</span><br><span class="line">fprintf(FP2,&quot;%s &quot;,NAME);</span><br><span class="line">strcpy(NAME,&quot;&quot;);</span><br><span class="line">continue;</span><br><span class="line">&#x2F;&#x2F;break;</span><br><span class="line">&#125;</span><br><span class="line">    strncat(NAME,&amp;DASH[si],1);</span><br><span class="line">    &#125;</span><br><span class="line">    if (record &#x3D;&#x3D; TRUE)&#123;</span><br><span class="line">if (DASH[si]&#x3D;&#x3D;&#39;|&#39;)&#123;</span><br><span class="line">record&#x3D;FALSE;</span><br><span class="line">printf(&quot;%s\n&quot;,m3u8);</span><br><span class="line">fprintf(FP2,&quot;%s\n&quot;,m3u8);</span><br><span class="line">strcpy(m3u8,&quot;&quot;);</span><br><span class="line">continue;</span><br><span class="line">&#125;</span><br><span class="line">if (DASH[si]&#x3D;&#x3D;&#39;&quot;&#39; )&#123;</span><br><span class="line">continue;</span><br><span class="line">&#125;</span><br><span class="line">    strncat(m3u8,&amp;DASH[si],1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">if (DASH[si]&#x3D;&#x3D;&#39;&quot;&#39; &amp;&amp; DASH[si-1]&#x3D;&#x3D;&#39;&#x3D;&#39; &amp;&amp; DASH[si-2]&#x3D;&#x3D;&#39;e&#39; &amp;&amp; DASH[si-3]&#x3D;&#x3D;&#39;m&#39; &amp;&amp; DASH[si-4]&#x3D;&#x3D;&#39;a&#39; )&#123;</span><br><span class="line">recordNAME&#x3D;TRUE;</span><br><span class="line">&#125;</span><br><span class="line">if (DASH[si]&#x3D;&#x3D;&#39;&#x3D;&#39; &amp;&amp; DASH[si-1]&#x3D;&#x3D;&#39;L&#39; &amp;&amp; DASH[si-2]&#x3D;&#x3D;&#39;R&#39; &amp;&amp; DASH[si-3]&#x3D;&#x3D;&#39;U&#39; &amp;&amp; DASH[si-4]&#x3D;&#x3D;&#39;l&#39; )&#123;</span><br><span class="line">record&#x3D;TRUE;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="openwrt和iptv接入"><a href="#openwrt和iptv接入" class="headerlink" title="openwrt和iptv接入"></a>openwrt和iptv接入</h4></li>
+<li>借助openwrt的udpxy转发，原理不明。。将openwrt和光猫的iptv接入同一路由器配置一下就可以看了。<br><img src="/img/openwrtudpxy.png" alt="openwrtudpxy.png"></li>
+<li>Interface<br><img src="/img/openwrtinterface.png" alt="openwrtinterface.png"></li>
+</ol>
+<ul>
+<li>这里我要提一下，因为openwrt用静态地址一直无法正常联网，多加一个DHCP什么都解决了，但是ip不固定了，所以要从你主路由上为openwrt保留一个静态地址。</li>
+</ul>
+<h4 id="xVeTe"><a href="#xVeTe" class="headerlink" title="xVeTe"></a>xVeTe</h4><ol>
+<li>方法1:完全自制m3u8和匹配的xml文件，能播放，但要显示节目就比较难搞了。我这里提供shell脚本帮助生成。(各地区和用以上c程序生成的内容可能不一样，仅供参考)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#m3u8</span><br><span class="line">a&#x3D;0 \</span><br><span class="line">echo &#39;#EXTM3U&#39; &gt;&gt;.&#x2F;iptv1.m3u8 &amp;&amp;  while read line ;do  </span><br><span class="line">echo &quot;#EXTINF:-1 tvg-id&#x3D;\&quot;$a\&quot;  tvg-name&#x3D;&quot;$(printf &quot;$line&quot; | awk &#39;&#123;printf $1&#125;&#39;)&quot;  ,&quot;$(printf &quot;$line&quot; | awk &#39;&#123;printf $1&#125;&#39;)&quot;&quot; &gt;&gt; .&#x2F;iptv1.m3u8</span><br><span class="line">echo &quot;&quot;$(printf &quot;$line&quot; | awk &#39;&#123;printf $2&#125;&#39;)&quot;&quot; &gt;&gt; .&#x2F;iptv1.m3u8</span><br><span class="line">a&#x3D;$((a+1))</span><br><span class="line">done &lt;&lt;EOF</span><br><span class="line">$(cat &#x2F;Users&#x2F;cb&#x2F;Downloads&#x2F;new.m3u8 )</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">#xml 只有匹配作用，没有节目表，可通过检测</span><br><span class="line">a&#x3D;0 \</span><br><span class="line">echo &#39;#EXTM3U&#39; &gt;&gt;.&#x2F;iptv1.m3u8 &amp;&amp;  while read line ;do  </span><br><span class="line">echo &quot;#EXTINF:-1 tvg-id&#x3D;\&quot;$a\&quot;  tvg-name&#x3D;&quot;ChannelName&quot;  ,ChannelName&quot; &gt;&gt; .&#x2F;iptv1.m3u8</span><br><span class="line">echo &quot;$line&quot; &gt;&gt; .&#x2F;iptv1.m3u8</span><br><span class="line">a&#x3D;$((a+1))</span><br><span class="line">done &lt;&lt;EOF</span><br><span class="line">$(cat &#x2F;Users&#x2F;cb&#x2F;Downloads&#x2F;new.m3u8 )</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<ul>
+<li>以下为最终整理修改出来的m3u8文件模板<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#EXTM3U</span><br><span class="line">#EXTINF:-1 tvg-id&#x3D;&quot;1&quot;  tvg-name&#x3D;xxxx高清  ,xxxx高清</span><br><span class="line">http:&#x2F;&#x2F;192.168.2.97:4022&#x2F;udp&#x2F;xxx.xx.xxx.xxx:xxxx</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li><p>方法2:仅生成m3u8文件，然后在Plex使用第三方的EPG频道节目列表(xml)，然后再Plex筛选(注意Plex里频道不能重复，不然一直报错进不去，所以没在这份表上的频道要被舍弃，要不然就要选错误的节目表)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#节目总表:http:&#x2F;&#x2F;epg.51zmt.top:8000&#x2F;e.xml</span><br><span class="line">#央视和各省卫视:http:&#x2F;&#x2F;epg.51zmt.top:8000&#x2F;cc.xml</span><br><span class="line">#地方及数字付费:http:&#x2F;&#x2F;epg.51zmt.top:8000&#x2F;difang.xml</span><br><span class="line"></span><br><span class="line">#详情参考https:&#x2F;&#x2F;github.com&#x2F;supzhang&#x2F;epg 项目</span><br><span class="line">#这里有进阶用法，如果你会的话，可以尝试用该项目获取节目表，然后用方法一喂给xVeTe</span><br></pre></td></tr></table></figure></li>
+<li><p>最优方法(使用<a target="_blank" rel="noopener" href="https://github.com/fanmingming/live">https://github.com/fanmingming/live</a> 该项目的m3u8模板和xml信息)</p>
+</li>
+<li><p>下载<a target="_blank" rel="noopener" href="https://live.fanmingming.com/tv/m3u/demo.m3u">https://live.fanmingming.com/tv/m3u/demo.m3u</a> ，将直播源链接替换成自己的</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://live.fanmingming.com/e.xml">https://live.fanmingming.com/e.xml</a> </p>
+</li>
+<li><p>直接编辑xteve，将<a target="_blank" rel="noopener" href="https://live.fanmingming.com/e.xml">https://live.fanmingming.com/e.xml</a> 填入xml，将自己的demo.m3u填入m3u8</p>
+<h4 id="Plex"><a href="#Plex" class="headerlink" title="Plex"></a>Plex</h4></li>
+<li><p>简单设置一下就可以了<br><img src="/img/plex.png" alt="plex.png"></p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">C B</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://keyboarder.xyz/2024/01/09/Plex%E6%90%AD%E9%85%8DxTeVe%E6%92%AD%E6%94%BEIPTV/">http://keyboarder.xyz/2024/01/09/Plex%E6%90%AD%E9%85%8DxTeVe%E6%92%AD%E6%94%BEIPTV/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://keyboarder.xyz" target="_blank">不知名小驿站</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/Avatar.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/08/31/%E5%AE%89%E5%8D%93%E4%BD%BF%E7%94%A8termux%E8%BF%9B%E8%A1%8Cchromedriver%E8%B0%83%E8%AF%95/"><img class="next-cover" src="/" onerror="onerror=null;src='/img/Cyan.png'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">安卓使用termux进行chromedriver调试</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%93%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">抓包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#openwrt%E5%92%8Ciptv%E6%8E%A5%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text">openwrt和iptv接入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xVeTe"><span class="toc-number">3.</span> <span class="toc-text">xVeTe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Plex"><span class="toc-number">4.</span> <span class="toc-text">Plex</span></a></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('/img/lockscreen.jpg')"><div id="footer-wrap"><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><br />
+<a href="http://beian.miit.gov.cn/"  style="color:white" target="_blank">浙ICP备2021005042号-1</a>
+<br />
+<a href="https://beian.miit.gov.cn"  style="color:white" target="_blank">信息产业部备案管理系统网址</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" data-mobile="true" data-text="爱意若难起,恨意亦难消,划几亩三分地,等新叶,待花开,当落日,又东升,恍惚间,已暮然" data-fontsize="22px" data-random="false" async="async"></script></div></body></html>
